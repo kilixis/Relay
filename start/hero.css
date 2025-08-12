@@ -107,9 +107,10 @@ body {
     font-family: 'Valorant', sans-serif;
     font-size: 10rem;
     margin-bottom: 1rem;
-    color: #ff4655;
-    text-shadow: 0 0 20px rgba(255, 70, 85, 0.5);
+    color: #41a2e2;
+    text-shadow: 0 0 20px rgba(65, 162, 226, 0.5);
     mix-blend-mode: difference;
+    padding-bottom: 20px;
 }
 
 @media (max-width: 768px) {
@@ -124,6 +125,7 @@ body {
 }
 
 button {
+    z-index: 1000;
     font-family: 'PP Neue Montreal', sans-serif;
     mix-blend-mode: normal;
     color: rgb(19,19,19);
@@ -139,6 +141,27 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 0.6s ease;
+}
+
+#button1 {
+    position: fixed;
+    top: 60%;
+    left: 39%;
+}
+
+#button2 {
+    position: fixed;
+    top: 60%;
+    left: 51%;
+}
+
+
+button:hover {
+    transform: translate(2px, 2px);
+    width: 145px;
+    height: 39.66px;
+    font-size: 1.05rem;
 }
 
 button .span-mother {
@@ -155,27 +178,27 @@ button:hover .span-mother span {
 }
 
 button .span-mother span:nth-child(1) {
-    transition: 0.2s;
+    transition: 0.2s ;
 }
 
 button .span-mother span:nth-child(2) {
-    transition: 0.3s;
+    transition: 0.3s ;
 }
 
 button .span-mother span:nth-child(3) {
-    transition: 0.4s;
+    transition: 0.4s ;
 }
 
 button .span-mother span:nth-child(4) {
-    transition: 0.5s;
+    transition: 0.5s ;
 }
 
 button .span-mother span:nth-child(5) {
-    transition: 0.6s;
+    transition: 0.6s ;
 }
 
 button .span-mother span:nth-child(6) {
-    transition: 0.7s;
+    transition: 0.7s ;
 }
 
 button .span-mother2 {
@@ -193,27 +216,27 @@ button:hover .span-mother2 span {
 }
 
 button .span-mother2 span {
-    transition: 0.2s;
+    transition: 0.2s ;
 }
 
 button .span-mother2 span:nth-child(2) {
-    transition: 0.3s;
+    transition: 0.3s ;
 }
 
 button .span-mother2 span:nth-child(3) {
-    transition: 0.4s;
+    transition: 0.4s ;
 }
 
 button .span-mother2 span:nth-child(4) {
-    transition: 0.5s;
+    transition: 0.5s ;
 }
 
 button .span-mother2 span:nth-child(5) {
-    transition: 0.6s;
+    transition: 0.6s ;
 }
 
 button .span-mother2 span:nth-child(6) {
-    transition: 0.7s;
+    transition: 0.7s ;
 }
 
 .buttons {
@@ -222,6 +245,6 @@ button .span-mother2 span:nth-child(6) {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 15px;
     gap: 150px;
 }
