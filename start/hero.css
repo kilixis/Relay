@@ -14,20 +14,67 @@
     src: url("../public/fonts/ppneuemontreal-medium.otf");
 }
 
+@font-face {
+    font-family: "Circular";
+    src: url("../public/fonts/circular-std-medium-500.ttf");
+}
+
 body {
     font-family: 'Valorant', sans-serif;
     overflow-x: hidden;
 }
 
-.hero {
+::-moz-selection { /* for firefox */
+  color: rgb(87, 0, 0);
+  background: rgb(172, 172, 172);
+}
+
+::selection {
+  color: rgb(87, 0, 0);
+  background: rgb(172, 172, 172);
+}
+
+.main-container {
     position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: rgb(13, 18, 33);
+}
+
+.scrolling-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    pointer-events: none;
+}
+
+.hero {
+    position: absolute;
     height: 100vh;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgb(13, 18, 33);
+    background: transparent;
     overflow: hidden;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 2;
+}
+
+.hero.slide-right {
+    transform: translateX(50%);
+}
+
+.hero.slide-left {
+    transform: translateX(-50%);
 }
 
 .scrolling-background {
@@ -113,20 +160,9 @@ body {
     padding-bottom: 20px;
 }
 
-@media (max-width: 768px) {
-    .scrolling-row {
-        font-size: 2.5rem;
-        height: 2.5rem;
-    }
-
-    .hero-content h1 {
-        font-size: 5rem;
-    }
-}
-
 button {
     z-index: 1000;
-    font-family: 'PP Neue Montreal', sans-serif;
+    font-family: 'Circular', sans-serif;
     mix-blend-mode: normal;
     color: rgb(19,19,19);
     font-style: bold;
@@ -147,13 +183,26 @@ button {
 #button1 {
     position: fixed;
     top: 60%;
-    left: 39%;
+    left: 38%;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 #button2 {
     position: fixed;
     top: 60%;
-    left: 51%;
+    left: 52%;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Button sliding animations */
+.hero.slide-right ~ #button1,
+.hero.slide-right ~ #button2 {
+    transform: translateX(50vw);
+}
+
+.hero.slide-left ~ #button1,
+.hero.slide-left ~ #button2 {
+    transform: translateX(-50vw);
 }
 
 
@@ -247,4 +296,185 @@ button .span-mother2 span:nth-child(6) {
     align-items: center;
     margin-top: 15px;
     gap: 150px;
+}
+
+.form-container {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100vh;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.signup-form {
+    left: 0;
+    transform: translateX(-100%);
+}
+
+.login-form {
+    right: 0;
+    transform: translateX(100%);
+}
+
+.form-container.active {
+    transform: translateX(0);
+}
+
+.form {
+    width: 80%;
+    max-width: 400px;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+}
+
+.form h2 {
+    font-family: 'Valorant', sans-serif;
+    color: #41a2e2;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(65, 162, 226, 0.3);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    color: white;
+    font-family: 'Circular', sans-serif;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    color: white;
+    font-family: 'Circular', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #41a2e2;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 10px rgba(65, 162, 226, 0.3);
+}
+
+.form-group input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.form-submit {
+    width: 100%;
+    padding: 1rem;
+    background: #41a2e2;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-family: 'Circular', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 550;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.form-submit:hover {
+    background: #5b8cff;
+    width: 50%;
+    margin: 0 auto;
+
+}
+
+
+.close-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    border: none;
+    width: 60px;
+    height: 60px;
+    color: white;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    background-color: transparent;
+    transform: rotate(360deg), translateX(0px), translateY(0px);
+    width: 60px;
+    height: 60px;
+    font-size: 1.6rem;
+}
+
+
+@media (max-width: 768px) {
+    .scrolling-row {
+        font-size: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .hero-content h1 {
+        font-size: 5rem;
+    }
+
+    .hero.slide-right,
+    .hero.slide-left {
+        transform: translateY(-100%);
+    }
+
+    .form-container {
+        width: 100%;
+        height: 100vh;
+    }
+
+    .signup-form {
+        transform: translateY(100%);
+    }
+
+    .login-form {
+        transform: translateY(100%);
+    }
+
+    #button1, #button2 {
+        position: fixed;
+        top: 70%;
+        transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    #button1 {
+        left: 25%;
+    }
+
+    #button2 {
+        left: 55%;
+    }
+
+    .hero.slide-right ~ #button1,
+    .hero.slide-right ~ #button2,
+    .hero.slide-left ~ #button1,
+    .hero.slide-left ~ #button2 {
+        transform: translateY(-100vh);
+    }
 }
