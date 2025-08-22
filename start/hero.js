@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         for (let j = 0; j < duplications; j++) {
             const textSpan = document.createElement('span');
-            textSpan.textContent = 'RELAY';
+            textSpan.textContent = 'EvenZa';
             content.appendChild(textSpan);
         }
         
